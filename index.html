@@ -1,49 +1,204 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedidos de Comida</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
-  <script src="./assets/js/code.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo 2025</title>
+    <meta name="description" content="Venta con la promo 2024 / 2025.">
+    <meta name="keywords" content="Promo2025, promo2025">
+    <meta name="author" content="Tecnología de TCER Company">
+    <link rel="stylesheet" href="./Assets/css/styles.css">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
 </head>
+
 <body>
-  <header>
-    <h1>Pedidos de Combo</h1>
-  </header>
+    <header class="container_menu">
+        <img class="menu_icono_logo" src="./Assets/img/logo_icon_menu.png" alt="Logo de promo">
+        <button class="menu_hamburguesa" aria-label="Abrir menú">
+            &#9776;
+        </button>
+        <nav class="micro_cotainer_menu">
+            <a href="#Home">Home</a>
+            <a href="#combos">Combos</a>
+            <a href="#ubicacion">Ubícanos</a>
+        </nav>
+    </header>
+    <main>
+        <br>
+        <br>
+        <section class="hero" id="Home">
+            <div class="hero_content">
+                <h1 class="hero_title">¿Tienes <span class="naranja">hambre</span>?</h1>
+                <h1 class="hero_title">¡Problema resuelto!</h1>
+                <p class="hero_description">La promoción 24-25 del Politécnico ITLA en colaboración con
+                    Pluyer Pollos estará vendiendo el lunes 28 de septiembre del
+                    2024 el día completo. ¿Quieres ahorrar tiempo? ¡Haz tu
+                    pedido por aqui mismo!</p>
+                <br>
+                <a href="" class="btn">Haz tu pedido</a>
+            </div>
+            <div class="hero_image">
+                <img src="./Assets/img/icono_pollo.png" alt="Imagen de hero" />
+            </div>
+        </section>
+        <br>
+        <section class="combos" id="combos">
+            <h1>¡Llévate tu combo ideal y disfruta de una experiencia única! Reserva ahora tu combo preferido</h1>
+            <br>
+            <br>
 
-  <div id="menu-pedidos">
-    <h2>Elige tu Combo</h2>
-    <div class="combo" onclick="abrirFormulario('Combo 1')">
-      <img src="./assets/img/Logo GestPre JPG.jpg" alt="Combo 2">
-      <h3>Combo 1</h3>
-      <p>Burger + Papas + Refresco</p>
-    </div>
-    <div class="combo" onclick="abrirFormulario('Combo 2')">
-      <img src="./assets/img/Logo GestPre JPG.jpg" alt="Combo 2">
-      <h3>Combo 2</h3>
-      <p>Pizza + Ensalada + Refresco</p>
-    </div>
-    <div class="combo" onclick="abrirFormulario('Combo 3')">
-      <img src="./assets/img/Logo GestPre JPG.jpg" alt="Combo 2">
-      <h3>Combo 3</h3>
-      <p>Tacos + Nachos + Refresco</p>
-    </div>
-  </div>
+            <div class="combo-card" onclick="showForm('Combo 1')"><img src="./Assets/img/combo1.jpeg"
+                    alt="combo1"><button onclick="showForm('Combo 1')" class="btn">Haz tu pedido</button></div>
+            <div class="combo-card" onclick="showForm('Combo 2')">
+                <img src="./Assets/img/combo2.jpeg" alt="combo2"><button onclick="showForm('Combo 2')" class="btn">Haz
+                    tu pedido</button>
+            </div>
+            <div class="combo-card" onclick="showForm('Combo 3')"><img src="./Assets/img/combo3.jpeg"
+                    alt="combo3"><button onclick="showForm('Combo 3')" class="btn">Haz tu pedido</button></div>
 
-  <div id="formulario-orden" class="oculto">
-    <h2>Formulario de Orden</h2>
-    <form onsubmit="enviarOrden(event)">
-      <input type="text" name="nombre" placeholder="Nombre" required>
-      <input type="text" name="direccion" placeholder="Dirección" required>
-      <input type="tel" name="telefono" placeholder="Teléfono" required>
-      <label>Cantidad:
-        <input type="number" name="cantidad" min="1" value="1" required>
-      </label>
-      <input type="hidden" id="comboSeleccionado" name="combo">
-      <button class="btn-submit" type="submit">Enviar Orden</button>
-    </form>
-  </div>
+            <section id="form-container">
+                <div id="for-content">
+                    <div id="notification" class="notification"></div>
+
+                    <h2 id="form-title">Formulario para:</h2>
+                    <form id="pedidoForm">
+                        <input type="hidden" id="producto" name="producto">
+
+                        <div>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre">
+                        </div>
+                        <div>
+                            <label for="id">Número de teléfono:</label>
+                            <input type="text" id="id" name="id">
+                        </div>
+                        <div>
+                            <label for="cantidad">Cantidad:</label>
+                            <input type="number" id="cantidad" name="cantidad">
+                        </div>
+                        <div id="notification" class="notification"></div>
+                        <button type="submit" id="enviar">Enviar Pedido</button>
+                        <button type="button" id="btn-back">Regresar</button>
+
+
+                    </form>
+                </div>
+            </section>
+        </section>
+        <section class="ubicacion-section" id="ubicacion">
+            <h2>¿Dónde nos ubicamos?</h2>
+            <p>
+                Estaremos ubicados en Parque Pluyer Pollos, Prolongación
+                Caracoles, Altos de Chavon, Boca Chica. de 9 de la mañana
+                a 10 de la noche. ¿Qué esperas? ¡ven a visitarnos!
+            </p>
+        </section>
+        <div>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <img src="./Assets/img/logo_icon_menu.png" alt="logo" width="290px">
+                </div>
+                <div class="footer-column">
+                    <h3>Redes de la promoción</h3>
+                    <ul>
+                        <li><a href="https://www.instagram.com/promop_25?igsh=MWE5ZjI4NzV2NHZlMw==">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@promop_25?_t=8qbGhcGTckn&_r=1">Tik Tok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Promo 24-25. Todos los derechos reservados. Tecnología de TCER Company</p>
+                <div class="links">
+                    <a href="https://www.instagram.com/roadev6/">Emanuel Roa - </a>
+                    <a href="https://www.instagram.com/g4bz19/">Gabriel de Jesús Reynoso Reyes</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function showForm(comboName) {
+            document.getElementById('form-title').innerText = `Formulario para: ${comboName}`;
+            document.getElementById('producto').value = comboName;
+            document.getElementById('form-container').style.display = 'block';
+        }
+
+        document.getElementById('btn-back').addEventListener('click', function () {
+            document.getElementById('form-container').style.display = 'none';
+
+        });
+
+        document.getElementById('pedidoForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const id = document.getElementById('id').value.trim();
+            const cantidad = document.getElementById('cantidad').value.trim();
+            const phoneRegex = /^\d{10}$/;
+
+            if (!nombre || !id || !cantidad) {
+                showNotification('Por favor, completa todos los campos.', 'error');
+                return;
+            }
+
+            if (!phoneRegex.test(id)) {
+                showNotification('Por favor, ingresa un número de teléfono válido de 10 dígitos.', 'error');
+                return;
+            }
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbySILrDm5j3VB_q1fmYuLu-FdgzGUS6u1x7BS3qI0rFhZrdX07c_J4VtGP6eZrmRpR31A/exec', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+                const result = await response.json();
+                alert(result.message);
+                this.reset();
+                document.getElementById('form-container').style.display = 'none';
+
+            } catch (error) {
+                console.error('Error al enviar los datos:', error);
+                alert('Hubo un problema al enviar el pedido. Inténtalo nuevamente.');
+            }
+        });
+
+        document.querySelector('.menu_hamburguesa').addEventListener('click', function () {
+            this.classList.toggle('active'); // Cambiar la clase del botón
+            const menu = document.querySelector('.micro_cotainer_menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        });
+
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show ' + (type === 'success' ? 'success' : 'error');
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.className = 'notification hide';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500);
+            }, 3000);
+        }
+
+    </script>
+
 </body>
+
 </html>
