@@ -158,6 +158,9 @@
         document.getElementById('pedidoForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
+            const btnEnviar = document.getElementById('enviar');
+            btnEnviar.disabled = true;
+
             const nombre = document.getElementById('nombre').value
             const idInput = document.getElementById('id');
             const cantidadInput = document.getElementById('cantidad');
@@ -170,16 +173,19 @@
 
             if (!nombre || !id || !cantidad || !dirrecio) {
                 showNotification('Por favor, completa todos los campos.', 'error');
+                btnEnviar.disabled = false;
                 return;
             }
 
             if (cantidad < 0 || cantidad > 99 || cantidad.length > 2) {
                 showNotification('Maximo de producto', 'error');
+                btnEnviar.disabled = false;
                 return;
             }
 
             if (!phoneRegex.test(id)) {
                 showNotification('Por favor, ingresa un número de teléfono válido', 'error');
+                btnEnviar.disabled = false;
                 return;
             }
 
@@ -212,6 +218,8 @@
             } catch (error) {
                 console.error('Error al enviar los datos:', error);
                 showNotification('Hubo un problema al enviar el pedido. Inténtalo nuevamente.', 'error');
+            } finally {
+                btnEnviar.disabled = false;
             }
         });
 
